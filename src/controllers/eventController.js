@@ -2,34 +2,28 @@ const Event = require('../models/eventModel');
 
 exports.createEvent = async (req, res) => {
   const image = req.file.buffer;
-  const eventName = req.body.eventName;
+  const workoutName = req.body.workoutName;
   const description = req.body.description;
-  const rollno = req.body.rollno;
-  const name = req.body.name;
-  const department = req.body.department;
+  const tool = req.body.tool;
   const venue = req.body.venue;
   const startDate = new Date(req.body.startDate);
-  const endDate = new Date(req.body.endDate);
   const startTime = req.body.startTime;
   const endTime = req.body.endTime;
-  const formLink = req.body.formLink;
-  const whatsappLink = req.body.whatsappLink;
+  const bmr = req.body.bmr;
+  const diet = req.body.diet;
 
   try {
     const event = new Event({
       image: image,
-      eventName: eventName,
+      workoutName: workoutName,
       description: description,
-      rollno: rollno,
-      name: name,
-      department: department,
+      tool: tool,
       venue: venue,
       startDate: startDate,
-      endDate: endDate,
       startTime: startTime,
       endTime: endTime,
-      formLink: formLink,
-      whatsappLink: whatsappLink,
+      bmr: bmr,
+      diet: diet,
     });
     await event.save();
     res.status(201).json({ message: 'Event created successfully', event: event });
